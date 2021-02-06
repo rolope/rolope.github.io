@@ -21,7 +21,7 @@ var table = function(variable_name) {
     var config_loaded = function(response, div_id) {
         var table_div = document.getElementById(div_id);
         var table_json = parse_response_to_json(response);
-        columns == table_json.columns;
+        columns = table_json.columns;
         table_div.innerHTML = make_table_code(table_json);
     };
     var config_error_loading = function() {
