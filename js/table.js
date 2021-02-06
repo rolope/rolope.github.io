@@ -113,7 +113,9 @@ var table = function(variable_name) {
                 var a_select = selects[select_index];
                 var selected_value = a_select.value;
                 var value = parseInt(selected_value);
-                sum += value;
+                if (!isNaN(value)) {
+                    sum += value;
+                }
             }
             sum[cell_index] = sum;
         }
