@@ -57,7 +57,7 @@ var table = function() {
     var make_select_code = function(select_class, select_id, number_of_options) {
         var select_code = "<select class='"+select_class+"' id='"+select_id+"'>";
         select_code += "<option></option>";
-        for (var number_of_option = nuber_of_options; 0 < number_of_option; number_of_option--) {
+        for (var number_of_option = number_of_options; 0 < number_of_option; number_of_option--) {
             var option_code = "<option value='"+number_of_option+"'>"+number_of_option+"</option>";
             select_code += option_code;
         }
