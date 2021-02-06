@@ -7,8 +7,10 @@
         <div id="character_div"></div>
     </body>
     <script>
+        var character_table = null;
+        
         function draw_character_table() {
-            var character_table = table('character_table');
+            character_table = table('character_table');
             character_table.draw("./js/config.json", "character_div");
         }
     </script>
