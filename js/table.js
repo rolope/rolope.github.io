@@ -140,7 +140,7 @@ var table = function(variable_name) {
         var length = sorted_sums_indices.length;
         var evaluation = "";
         for (var index = 0; index < length; index++) {
-            var column_index = sort_sums_indices[index];
+            var column_index = sorted_sums_indices[index];
             evaluation += make_evaluation_line_code(column_index, index);
         }
         return evaluation;
