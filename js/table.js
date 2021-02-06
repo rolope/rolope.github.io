@@ -117,7 +117,7 @@ var table = function(variable_name) {
                     sum += value;
                 }
             }
-            sum[cell_index] = sum;
+            sums[cell_index] = sum;
         }
         return sums;
     };
