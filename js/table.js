@@ -28,16 +28,16 @@ var table = function() {
     var make_table_code = function(table_json) {
         var rows_json = table_json.rows;
         var table_code = "<table>";
-        for (row_json in rows_json) {
-            table_code += make_row_code(row_json);
+        for (row_index in rows_json) {
+            table_code += make_row_code(rows_json[row_index]);
         }
         table_code += "</table>";
         return table_code;
     };
     var make_row_code = function(row_json) {
         var row_code = "<tr>";
-        for (cell_json in row_json) {
-            row_code = make_cell_code(cell_json);
+        for (cell_index in row_json) {
+            row_code = make_cell_code(row_json[cell_index]);
         }
         row_code = "</tr>";
         return row_code;
