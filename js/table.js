@@ -121,25 +121,46 @@ var table = function(variable_name) {
         }
         return sums;
     };
+    var sort_sums_indices = function(sums) {
+        var length = sums.length;
+        var sorted = [];
+        for (var index = 0; index < length; index++) {
+            sorted[index] = index;
+        }
+        sorted.sort(
+            function(x, y) {
+                return sums[x] < sums[y] ? 1 : sums[y] < sums[x] ? -1 : 0;
+            }
+        );
+        return sorted;
+    }
     var evaluate = function() {
         var sums = sum_columns();
-        var max = 0;
-        var index_max = 0;
-        for (sum_index in sums) {
-            var sum = sums[sum_index];
-            if (max < sum) {
-                max = sum;
-                index_max = sum_index;
-            }
+        var sorted_sums_indices = sort_sums_indices(sums);
+        var length = sorted_sums_indices.length;
+        var evaluation = "";
+        for (var index = 0; index < length; index++) {
+            var column_index = sorted_sums_indices[index];
+            evaluation += make_evaluation_line_code(column_index, index);
         }
-
-        var evaluation = columns[index_max];
         return evaluation;
+    };
+    var make_evaluation_line_code = function(column_index, index) {
+        var line_code = "<div><span>";
+        if (index == 0) {
+            line_code += "Tu elemento principal es:";
+        } else {
+            line_code += "Tu elemento "+(index + 1)+" es:";
+        }
+        line_code += "</span>";
+        line_code += "<span>"+columns[column_index]+"</span>";
+        line_code += "</span></div>";
+        return line_code;
     };
     var display_evaluation = function(display_id) {
         var display = document.getElementById(display_id);
         var evaluation = evaluate();
-        display.innerText = evaluation;
+        display.innerHTML = evaluation;
     }
 
     return {
