@@ -1,0 +1,15 @@
+{
+    "columns": [ "TIERRA", "AIRE", "AGUA", "FUEGO"],
+    "rows": [
+        [ "decisivo", "ordenado", "considerado", "espontáneo" ],
+        [ "resultados", "sistemas", "apoyo", "inspiración" ],
+        [ "destino", "horario", "viaje", "sueño" ],
+        [ "crítico", "cuidadoso", "indeciso", "distraído" ],
+        [ "audaz", "preciso", "paciente", "entusiasta" ]
+        [ "hechos", "lógica", "sentimientos", "posibilidades" ],
+        [ "agresivo", "meticuloso", "cariñoso", "sociable" ],
+        [ "metas", "calidad", "acuerdos", "ideas" ],
+        [ "competitivo", "analítico", "leal", "optimista" ],
+        [ "usarlo", "verificarlo", "compartirlo", "jugar con él" ]
+    ]
+}
