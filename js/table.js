@@ -33,23 +33,23 @@ var table = function(variable_name) {
 
     var make_table_code = function(table_json) {
         var rows_json = table_json.rows;
-        var table_code = "<table>";
+        var table_code = "<div class='container'>";
         for (row_index in rows_json) {
             table_code += make_row_code(rows_json[row_index], row_index);
         }
-        table_code += "</table>";
+        table_code += "</div>";
         return table_code;
     };
     var make_row_code = function(row_json, row_index) {
-        var row_code = "<tr>";
+        var row_code = "<div class='row'>";
         for (cell_index in row_json) {
             row_code += make_cell_code(row_json[cell_index], row_index, cell_index, row_json.length);
         }
-        row_code += "</tr>";
+        row_code += "</div>";
         return row_code;
     }
     var make_cell_code = function(cell_json, row_index, cell_index, number_of_cells) {
-        var cell_code = "<td>";
+        var cell_code = "<div class='col'>";
         cell_code += cell_json;
         cell_code += "&nbsp;";
         cell_code += make_select_code(
@@ -57,7 +57,7 @@ var table = function(variable_name) {
             cell_index,
             number_of_cells
         );
-        cell_code += "</td>";
+        cell_code += "</div>";
         return cell_code;
     }
     var make_select_code = function(row_index, cell_index, number_of_options) {
