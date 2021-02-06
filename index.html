@@ -1,1 +1,14 @@
-tetramap
+<html>
+    <head>
+        <title>tetramap</title>
+        <script src="./js/table.js"></script>
+    </head>
+    <body onload="draw_character_table();">
+        <div id="character_table"></div>
+    </body>
+    <script>
+        function draw_character_table() {
+            table.draw("./js/config.json", "character_table");
+        }
+    </script>
+</html>
