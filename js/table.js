@@ -4,6 +4,8 @@ var table = function(variable_name) {
     var set_div_id = function(div_id) {
         this.div_id = div_id;
     };
+    var columns = [];
+
     var load_config = function(config_path) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -19,13 +21,16 @@ var table = function(variable_name) {
     var config_loaded = function(response, div_id) {
         var table_div = document.getElementById(div_id);
         var table_json = parse_response_to_json(response);
+        columns == table_json.columns;
         table_div.innerHTML = make_table_code(table_json);
     };
     var config_error_loading = function() {
     };
+
     var parse_response_to_json = function(response) {
         return JSON.parse(response);
     };
+
     var make_table_code = function(table_json) {
         var rows_json = table_json.rows;
         var table_code = "<table>";
@@ -69,6 +74,7 @@ var table = function(variable_name) {
         select_code += "</select>";
         return select_code;
     };
+
     var make_row_class = function(row_index) {
         return div_id+"_select_row_"+row_index;
     };
@@ -97,11 +103,49 @@ var table = function(variable_name) {
         }
     };
 
+    var sum_columns = function() {
+        var sums = [];
+        for (cell_index in columns) {
+            var cell_class = make_cell_class(cell_index);
+            var selects = document.getElementsByClassName(cell_class);
+            var sum = 0;
+            for (select_index in selects) {
+                var a_select = selects[select_index];
+                var selected_value = a_select.value;
+                var value = parseInt(selected_value);
+                sum += value;
+            }
+            sum[cell_index] = sum;
+        }
+        return sums;
+    };
+    var evaluate = function() {
+        var sums = sum_columns();
+        var max = 0;
+        var index_max = 0;
+        for (sum_index in sums) {
+            var sum = sums[sum_index];
+            if (max < sum) {
+                max = sum;
+                index_max = sum_index;
+            }
+        }
+
+        var evaluation = columns[index_max];
+        return evaluation;
+    };
+    var display_evaluation = function(display_id) {
+        var display = document.getElementById(display_id);
+        var evaluation = evaluate();
+        display.innerText = evaluation;
+    }
+
     return {
         draw: function(config_path, div_id) {
             set_div_id(div_id);
             load_config(config_path);
         },
-        avoid_duplicates: avoid_duplicates
+        avoid_duplicates: avoid_duplicates,
+        display_evaluation: display_evaluation
     };
 };
