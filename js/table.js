@@ -12,6 +12,8 @@ var table = function() {
                 config_error_loading();
             }
         };
+        xhr.open("GET", config_path, true);
+        xhr.send();
     };
     var config_loaded = function(response, div_id) {
         var table_div = document.getElementById(div_id);
