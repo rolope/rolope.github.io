@@ -37,9 +37,9 @@ var table = function() {
     var make_row_code = function(row_json) {
         var row_code = "<tr>";
         for (cell_index in row_json) {
-            row_code = make_cell_code(row_json[cell_index]);
+            row_code += make_cell_code(row_json[cell_index]);
         }
-        row_code = "</tr>";
+        row_code += "</tr>";
         return row_code;
     }
     var make_cell_code = function(cell_json) {
