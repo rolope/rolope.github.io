@@ -166,7 +166,9 @@ var table = function(variable_name) {
         var display = document.getElementById(display_id);
         var evaluation = evaluate();
         display.innerHTML = evaluation;
-        display.classList.add("border border-5 rounded");
+        display.classList.add("border");
+        display.classList.add("border-5");
+        display.classList.add("rounded");
     }
 
     return {
