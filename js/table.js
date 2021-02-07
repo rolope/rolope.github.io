@@ -37,7 +37,7 @@ var table = function(variable_name) {
         var columns_number = 0;
         for (row_index in rows_json) {
             table_code += make_row_code(rows_json[row_index], row_index);
-            var row_columns_number = rows_json.length;
+            var row_columns_number = rows_json[row_index].length;
             if (columns_number < row_columns_number) {
                 columns_number = row_columns_number;
             }
@@ -83,6 +83,7 @@ var table = function(variable_name) {
     };
     var make_sums_row = function(columns_number) {
         var sums_row_code = "<div class='row p-3'>";
+        sums_row_code += "<div class='col'></div>";
         for (var cell_index = 0; cell_index < columns_number; cell_index++) {
             sums_row_code += "<div class='col' id='"+make_sum_column_id(cell_index)+"'></div>";
         }
