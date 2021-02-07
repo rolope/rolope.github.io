@@ -148,10 +148,10 @@ var table = function(variable_name) {
     };
     var make_evaluation_line_code = function(column_index, index) {
         var is_main_result = index == 0;
-        var tag = "h3";
+        var tag = "h4";
         var explanation = "Tu elemento "+(index + 1)+" es";
         if (is_main_result) {
-            tag = "h1";
+            tag = "h3";
             explanation = "Tu elemento principal es";
         }
         var line_code = "<"+tag+">";
