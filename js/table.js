@@ -147,15 +147,16 @@ var table = function(variable_name) {
         return evaluation;
     };
     var make_evaluation_line_code = function(column_index, index) {
-        var line_code = "<div><span>";
-        if (index == 0) {
-            line_code += "Tu elemento principal es:";
-        } else {
-            line_code += "Tu elemento "+(index + 1)+" es:";
+        var is_main_result = index == 0;
+        var tag = "h3";
+        var explanation = "Tu elemento "+(index + 1)+" es";
+        if (is_main_result) {
+            tag = "h1";
+            explanation = "Tu elemento principal es";
         }
-        line_code += "</span>";
-        line_code += "<span>"+columns[column_index]+"</span>";
-        line_code += "</span></div>";
+        var line_code = "<"+tag+">";
+        line_code += explanation+" "+columns[column_index];
+        line_code += "</"+tag+">";
         return line_code;
     };
     var display_evaluation = function(display_id) {
