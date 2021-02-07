@@ -151,11 +151,11 @@ var table = function(variable_name) {
         var tag = "h4";
         var explanation = "Tu elemento "+(index + 1)+" es";
         if (is_main_result) {
-            tag = "h3";
+            tag = "h2";
             explanation = "Tu elemento principal es";
         }
         var line_code = "<"+tag+">";
-        line_code += explanation+" "+columns[column_index];
+        line_code += explanation+" <b>"+columns[column_index]+"</b>";
         line_code += "</"+tag+">";
         return line_code;
     };
