@@ -85,7 +85,10 @@ var table = function(variable_name) {
         var sums_row_code = "<div class='row p-3'>";
         sums_row_code += "<div class='col'></div>";
         for (var cell_index = 0; cell_index < columns_number; cell_index++) {
-            sums_row_code += "<div class='col' id='"+make_sum_column_id(cell_index)+"'></div>";
+            sums_row_code += "<div class='col'><div class='row'>";
+            sums_row_code += "<div class='col' id='"+make_sum_icon_id(cell_index)+"'>";
+            sums_row_code += "<div class='col text-start' id='"+make_sum_column_id(cell_index)+"'>";
+            sums_row_code += "</div></div>";
         }
         sums_row_code += "</div>";
         return sums_row_code;
@@ -100,6 +103,9 @@ var table = function(variable_name) {
     var make_select_id = function(row_index, cell_index) {
         return div_id+"_select_"+row_index+"_"+cell_index;
     };
+    var make_sum_icon_id = function(cell_index) {
+        return div_id+"_sum_icon_"+cell_index;
+    }
     var make_sum_column_id = function(cell_index) {
         return div_id+"_sum_column_"+cell_index;
     }
@@ -142,6 +148,10 @@ var table = function(variable_name) {
         return sums;
     };
     var display_sum_column = function(sum, cell_index) {
+        var sum_icon_id = make_sum_icon_id(cell_index);
+        var sum_icon_cell = document.getElementById(sum_icon_id);
+        sum_icon_cell.innerHTML = columns[cell_index].icon;
+
         var sum_column_id = make_sum_column_id(cell_index);
         var sum_column_cell = document.getElementById(sum_column_id);
         sum_column_cell.innerHTML = sum;
@@ -174,12 +184,15 @@ var table = function(variable_name) {
         var is_main_result = index == 0;
         var tag = "h4";
         var explanation = "Tu elemento "+(index + 1)+" es";
+        var title = columns[column_index].title;
+        var icon = columns[column_index].icon;
         if (is_main_result) {
             tag = "h2";
             explanation = "Tu elemento principal es";
+            title = title.toUpperCase();
         }
         var line_code = "<"+tag+">";
-        line_code += explanation+" <b>"+columns[column_index]+"</b>";
+        line_code += explanation+" <b>"+title+"</b> "+icon;
         line_code += "</"+tag+">";
         if (is_main_result) {
             line_code += "<hr />";
