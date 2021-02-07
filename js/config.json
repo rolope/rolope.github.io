@@ -1,5 +1,10 @@
 {
-    "columns": [ "TIERRA 🌱", "AIRE 🌬️", "AGUA 🌊", "FUEGO 🔥"],
+    "columns": [
+        { "icon": "🌱", "title": "Tierra" },
+        { "icon": "🌬️", "title": "Aire" },
+        { "icon": "🌊", "title": "Agua" },
+        { "icon": "🔥", "title": "Fuego" }
+    ],
     "rows": [
         [ "decisivo", "ordenado", "considerado", "espontáneo" ],
         [ "resultados", "sistemas", "apoyo", "inspiración" ],
