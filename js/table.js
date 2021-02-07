@@ -51,7 +51,7 @@ var table = function(variable_name) {
     var make_cell_code = function(cell_json, row_index, cell_index, number_of_cells) {
         var cell_code = "<div class='col'><div class='row'>";
         cell_code += "<div class='col'>"+cell_json+"</div>";
-        cell_code += "<div class='col'>";
+        cell_code += "<div class='col text-start'>";
         cell_code += make_select_code(
             row_index,
             cell_index,
