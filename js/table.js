@@ -169,6 +169,7 @@ var table = function(variable_name) {
         display.classList.add("border");
         display.classList.add("border-5");
         display.classList.add("rounded");
+        display.scrollIntoView();
     }
 
     return {
