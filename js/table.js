@@ -33,15 +33,14 @@ var table = function(variable_name) {
 
     var make_table_code = function(table_json) {
         var rows_json = table_json.rows;
-        var table_code = "<div class='container'>";
+        var table_code = "";
         for (row_index in rows_json) {
             table_code += make_row_code(rows_json[row_index], row_index);
         }
-        table_code += "</div>";
         return table_code;
     };
     var make_row_code = function(row_json, row_index) {
-        var row_code = "<div class='row'>";
+        var row_code = "<div class='row border-bottom border-primary p-3'>";
         for (cell_index in row_json) {
             row_code += make_cell_code(row_json[cell_index], row_index, cell_index, row_json.length);
         }
@@ -65,7 +64,7 @@ var table = function(variable_name) {
         var cell_class = make_cell_class(cell_index);
         var select_class = row_class+" "+cell_class;
         var select_id = make_select_id(row_index, cell_index);
-        var select_code = "<select class='"+select_class+"' id='"+select_id+"' onchange='"+variable_name+".avoid_duplicates("+row_index+", "+cell_index+");'>";
+        var select_code = "<select class='"+select_class+" form_select' id='"+select_id+"' onchange='"+variable_name+".avoid_duplicates("+row_index+", "+cell_index+");'>";
         select_code += "<option></option>";
         for (var number_of_option = number_of_options; 0 < number_of_option; number_of_option--) {
             var option_code = "<option value='"+number_of_option+"'>"+number_of_option+"</option>";
