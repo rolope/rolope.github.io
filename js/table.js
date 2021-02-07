@@ -34,9 +34,15 @@ var table = function(variable_name) {
     var make_table_code = function(table_json) {
         var rows_json = table_json.rows;
         var table_code = "";
+        var columns_number = 0;
         for (row_index in rows_json) {
             table_code += make_row_code(rows_json[row_index], row_index);
+            var row_columns_number = rows_json.length;
+            if (columns_number < row_columns_number) {
+                columns_number = row_columns_number;
+            }
         }
+        table_code += make_sums_row(columns_number);
         return table_code;
     };
     var make_row_code = function(row_json, row_index) {
@@ -75,6 +81,14 @@ var table = function(variable_name) {
         select_code += "</select>";
         return select_code;
     };
+    var make_sums_row = function(columns_number) {
+        var sums_row_code = "<div class='row p-3'>";
+        for (var cell_index = 0; cell_index < columns_number; cell_index++) {
+            sums_row_code += "<div class='col' id='"+make_sum_column_id(cell_index)+"'></div>";
+        }
+        sums_row_code += "</div>";
+        return sums_row_code;
+    }
 
     var make_row_class = function(row_index) {
         return div_id+"_select_row_"+row_index;
@@ -85,6 +99,9 @@ var table = function(variable_name) {
     var make_select_id = function(row_index, cell_index) {
         return div_id+"_select_"+row_index+"_"+cell_index;
     };
+    var make_sum_column_id = function(cell_index) {
+        return div_id+"_sum_column_"+cell_index;
+    }
 
     var avoid_duplicates = function(row_index, cell_index) {
         var row_class = make_row_class(row_index);
@@ -119,9 +136,15 @@ var table = function(variable_name) {
                 }
             }
             sums[cell_index] = sum;
+            display_sum_column(sum, cell_index);
         }
         return sums;
     };
+    var display_sum_column = function(sum, cell_index) {
+        var sum_column_id = make_sum_column_id(cell_index);
+        var sum_column_cell = document.getElementById(sum_column_id);
+        sum_column_cell.innerHTML = sum;
+}
     var sort_sums_indices = function(sums) {
         var length = sums.length;
         var sorted = [];
