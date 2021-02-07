@@ -86,7 +86,7 @@ var table = function(variable_name) {
         sums_row_code += "<div class='col'></div>";
         for (var cell_index = 0; cell_index < columns_number; cell_index++) {
             sums_row_code += "<div class='col'><div class='row'>";
-            sums_row_code += "<div class='col' id='"+make_sum_icon_id(cell_index)+"'></div>";
+            sums_row_code += "<div class='col text-end' id='"+make_sum_icon_id(cell_index)+"'></div>";
             sums_row_code += "<div class='col text-start' id='"+make_sum_column_id(cell_index)+"'></div>";
             sums_row_code += "</div></div>";
         }
