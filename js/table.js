@@ -157,12 +157,16 @@ var table = function(variable_name) {
         var line_code = "<"+tag+">";
         line_code += explanation+" <b>"+columns[column_index]+"</b>";
         line_code += "</"+tag+">";
+        if (is_main_result) {
+            line_code += "<hr />";
+        }
         return line_code;
     };
     var display_evaluation = function(display_id) {
         var display = document.getElementById(display_id);
         var evaluation = evaluate();
         display.innerHTML = evaluation;
+        display.classList.add("border border-5 rounded");
     }
 
     return {
