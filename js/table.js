@@ -41,7 +41,7 @@ var table = function(variable_name) {
     };
     var make_row_code = function(row_json, row_index) {
         var row_code = "<div class='row border-bottom border-primary p-3'>";
-        row_code += "<div class='col text-muted'>"+(row_index + 1)+"</div>";
+        row_code += "<div class='col fw-bold'>"+(parseInt(row_index) + 1)+"</div>";
         for (cell_index in row_json) {
             row_code += make_cell_code(row_json[cell_index], row_index, cell_index, row_json.length);
         }
@@ -49,15 +49,16 @@ var table = function(variable_name) {
         return row_code;
     }
     var make_cell_code = function(cell_json, row_index, cell_index, number_of_cells) {
-        var cell_code = "<div class='col'>";
-        cell_code += cell_json;
-        cell_code += "&nbsp;";
+        var cell_code = "<div class='col'><div class='row'>";
+        cell_code += "<div class='col'>"+cell_json+"</div>";
+        cell_code += "<div class='col'>";
         cell_code += make_select_code(
             row_index,
             cell_index,
             number_of_cells
         );
         cell_code += "</div>";
+        cell_code += "</div></div>";
         return cell_code;
     }
     var make_select_code = function(row_index, cell_index, number_of_options) {
