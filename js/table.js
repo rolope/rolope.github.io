@@ -33,31 +33,32 @@ var table = function(variable_name) {
 
     var make_table_code = function(table_json) {
         var rows_json = table_json.rows;
-        var table_code = "<table>";
+        var table_code = "";
         for (row_index in rows_json) {
             table_code += make_row_code(rows_json[row_index], row_index);
         }
-        table_code += "</table>";
         return table_code;
     };
     var make_row_code = function(row_json, row_index) {
-        var row_code = "<tr>";
+        var row_code = "<div class='row border-bottom border-primary p-3'>";
+        row_code += "<div class='col fw-bold'>"+(parseInt(row_index) + 1)+"</div>";
         for (cell_index in row_json) {
             row_code += make_cell_code(row_json[cell_index], row_index, cell_index, row_json.length);
         }
-        row_code += "</tr>";
+        row_code += "</div>";
         return row_code;
     }
     var make_cell_code = function(cell_json, row_index, cell_index, number_of_cells) {
-        var cell_code = "<td>";
-        cell_code += cell_json;
-        cell_code += "&nbsp;";
+        var cell_code = "<div class='col'><div class='row'>";
+        cell_code += "<div class='col'>"+cell_json+"</div>";
+        cell_code += "<div class='col text-start'>";
         cell_code += make_select_code(
             row_index,
             cell_index,
             number_of_cells
         );
-        cell_code += "</td>";
+        cell_code += "</div>";
+        cell_code += "</div></div>";
         return cell_code;
     }
     var make_select_code = function(row_index, cell_index, number_of_options) {
@@ -65,7 +66,7 @@ var table = function(variable_name) {
         var cell_class = make_cell_class(cell_index);
         var select_class = row_class+" "+cell_class;
         var select_id = make_select_id(row_index, cell_index);
-        var select_code = "<select class='"+select_class+"' id='"+select_id+"' onchange='"+variable_name+".avoid_duplicates("+row_index+", "+cell_index+");'>";
+        var select_code = "<select class='form_select "+select_class+"' id='"+select_id+"' onchange='"+variable_name+".avoid_duplicates("+row_index+", "+cell_index+");'>";
         select_code += "<option></option>";
         for (var number_of_option = number_of_options; 0 < number_of_option; number_of_option--) {
             var option_code = "<option value='"+number_of_option+"'>"+number_of_option+"</option>";
@@ -146,21 +147,28 @@ var table = function(variable_name) {
         return evaluation;
     };
     var make_evaluation_line_code = function(column_index, index) {
-        var line_code = "<div><span>";
-        if (index == 0) {
-            line_code += "Tu elemento principal es:";
-        } else {
-            line_code += "Tu elemento "+(index + 1)+" es:";
+        var is_main_result = index == 0;
+        var tag = "h4";
+        var explanation = "Tu elemento "+(index + 1)+" es";
+        if (is_main_result) {
+            tag = "h2";
+            explanation = "Tu elemento principal es";
         }
-        line_code += "</span>";
-        line_code += "<span>"+columns[column_index]+"</span>";
-        line_code += "</span></div>";
+        var line_code = "<"+tag+">";
+        line_code += explanation+" <b>"+columns[column_index]+"</b>";
+        line_code += "</"+tag+">";
+        if (is_main_result) {
+            line_code += "<hr />";
+        }
         return line_code;
     };
     var display_evaluation = function(display_id) {
         var display = document.getElementById(display_id);
         var evaluation = evaluate();
         display.innerHTML = evaluation;
+        display.classList.add("border");
+        display.classList.add("border-5");
+        display.classList.add("rounded");
     }
 
     return {
