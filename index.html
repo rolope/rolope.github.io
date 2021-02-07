@@ -12,11 +12,22 @@
     </head>
     <body onload="draw_character_table();">
         <div class="container-sm ">
-            <div class="container m-4 p-4 text-start" id="instructions">
-                Para <b><i>cada una de las filas</i></b>, seleccione la palabra que m&aacute;s vaya de acuerdo con su forma de ser y elija al lado derecho de la misma el n&uacute;mero 4.<br />
-                Posteriormente elija la segunda que m&aacute;s le describa y coloque el n&uacute;mero 3, y así sucesivamente hasta llegar a la que menos se relacione con usted a la cual le asignar&aacute; un n&uacute;mero 1.<br />
-                Por favor conteste <i>lo que m&aacute;s se acerca a su forma de ser y no como le gustar&iacute;a ser</i>.<br />
-                Al terminar, haga clic en el bot&oacute;n <b>Sumar</b> para evaluar las selecciones de cada columna.
+            <h1>Test de Temperamento</h1>
+            <div class="container m-4 p-4 text-start">
+                <div class="row">
+                    <div class="col-9">
+                        <p>
+                            Para <b><i>cada una de las filas</i></b>, seleccione la palabra que m&aacute;s vaya de acuerdo con su forma de ser y elija al lado derecho de la misma el n&uacute;mero 4.
+                            Posteriormente elija la segunda que m&aacute;s le describa y coloque el n&uacute;mero 3, y así sucesivamente hasta llegar a la que menos se relacione con usted a la cual le asignar&aacute; un n&uacute;mero 1.<br />
+                        </p>
+                        <p>
+                            Por favor conteste <i>lo que m&aacute;s se acerca a su forma de ser y no como le gustar&iacute;a ser</i>.<br />
+                        </p>
+                        <p>
+                            Al terminar, haga clic en el bot&oacute;n <button type="button" class="btn btn-primary" onclick="character_table.display_evaluation('character_evaluation');">Sumar</button> para evaluar las selecciones de <b><i>cada columna</i></b>.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="container m-4 text-center" id="character_div"></div>
             <div class="row m-4 p-4 justify-content-around">
