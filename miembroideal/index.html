@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>El miembro ideal del equipo</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <script type="text/javascript">
+            var scales = [
+                {
+                    "name": "HUMILDAD",
+                    "perceptions": [
+                        "Elogio y hago cumplidos sin reservas",
+                        "Admito fácilmente mis errores",
+                        "Estoy dispuesto a hacer el trabajo menos cómodo por el bien del equipo",
+                        "Comparto con gusto el crédito de los logros del equipo",
+                        "Conscientemente conozco mis debilidades",
+                        "Ofrezco y acepto disculpas abiertamente"
+                    ]
+                },
+                {
+                    "name": "AMBICIÓN",
+                    "perceptions": [
+                        "Hago más de lo que requiere mi trabajo",	
+                        "Me apasiona la misión del equipo",
+                        "Siento responsabilidad personal por el éxito del equipo",
+                        "Estoy dispuesto a contribuir y pensar en el trabajo fuera de las horas laborales",	
+                        "Estoy dispuesto a hacer trabajo tedioso o actividades exigentes cuando es necesario",
+                        "Busco oportunidades de contribuir fuera de mi área de responsabilidad"
+                    ]
+                },
+                {
+                    "name": "INTELIGENCIA SOCIAL",
+                    "perceptions": [
+                        "Estoy consciente de los sentimientos de los demás en conversaciones y reuniones",
+                        "Muestro empatía por los otros miembros del equipo",
+                        "Puedo demostrar interés genuino en las vidas de los otros miembros del equipo",
+                        "Escucho de manera atenta a los demás",
+                        "Estoy al tanto de cómo mis palabras y acciones impactan a los demás",
+                        "Ajusto mi comportamiento y estilo según las conversaciones o relaciones"
+                    ]
+                }
+            ];
+            var scores = [
+                {
+                    "value": 3,
+                    "description": "Normalmente"
+                },
+                {
+                    "value": 2,
+                    "description": "Algunas veces"
+                },
+                {
+                    "value": 1,
+                    "description": "Muy pocas veces"
+                },
+            ];
+            var totals = [
+                {
+                    "floor": 17,
+                    "description": "La virtud es una fortaleza potencial"
+                },
+                {
+                    "floor": 14,
+                    "description": "Hay algo de trabajo pendiente en la virtud para poder convertirse en un miembro ideal de un equipo"
+                },
+                {
+                    "floor": 0,
+                    "description": "Se necesita una mejora inmediata en la virtud"
+                }
+            ];
+
+            function draw_scales(div_id) {
+                var scales_div = document.getElementById(div_id);
+                scales.forEach(scale => draw_scale(scale, scales_div));
+            }
+
+            function draw_scale(scale, scales_div) {
+                var scale_html = "";
+                scale_html += "<div class='row'>";
+                scale_html += "<div class='col-2 border-top border-start border-bottom border-primary p-2'>";
+                scale_html += "<b>"+scale.name+"</b><br>";
+                scale_html += "Mis compañeros de equipo dir&iacute;an:";
+                scale_html += "</div>";
+                scale_html += "<div class='col-10'>";
+                var perceptions = scale.perceptions;
+                for (perception_id in perceptions) {
+                    var perception = perceptions[perception_id];
+                    scale_html += "<div class='row border-top border-start border-end border-primary border-1 text-start p-2'>";
+                    scale_html += "<div class='col-9 text-start'>"+perception+"</div>";
+                    scale_html += "<div class='col-3'>";
+                    scale_html += "<select class='select_"+scale.name+"'>";
+                    scale_html += "<option selected></option>";
+                    for (score_id in scores) {
+                        var score = scores[score_id];
+                        scale_html += "<option value='"+score.value+"'>"+score.value+": "+score.description+"</option>";
+                    }
+                    scale_html += "</select>";
+                    scale_html += "</div>";
+                    scale_html += "</div>";
+                }
+                scale_html += "<div class='row border border-primary border-1 bg-primary text-white p-2'>";
+                scale_html += "<div class='col-9 text-end'>TOTAL DE "+scale.name+":</div>";
+                scale_html += "<div class='col-3 text-start' id='evaluation_"+scale.name+"'>";
+                scale_html += "<button type='button' class='btn btn-light' onclick='display_evaluation(\""+scale.name+"\");'>Sumar</button>";
+                scale_html += "</div>";
+                scale_html += "</div>";
+                scale_html += "</div>";
+                scale_html += "</div>";
+                scales_div.innerHTML += scale_html;
+            }
+
+            function display_evaluation(scale_name) {
+                var selects = document.getElementsByClassName("select_"+scale_name);
+                var sum = 0;
+                for (select_index in selects) {
+                    var a_select = selects[select_index];
+                    var selected_value = a_select.value;
+                    var value = parseInt(selected_value);
+                    if (!isNaN(value)) {
+                        sum += value;
+                    }
+                }
+                var evaluation_div = document.getElementById("evaluation_"+scale_name);
+                var evaluation = "";
+                evaluation += "<b>"+sum+"</b><br>";
+                for (total_id in totals) {
+                    var total = totals[total_id];
+                    if (total.floor <= sum) {
+                        evaluation += "<i>"+total.description+"</i>";
+                        break;
+                    }
+                }
+                evaluation_div.innerHTML = evaluation;
+            }
+        </script>
+    </head>
+    <body onload="draw_scales('scales_div');">
+        <div class="container-sm ">
+            <div class="container m-4 p-4 text-start">
+                <h1>AUTOEVALUACI&Oacute;N</h1>
+                <h2>El miembro ideal del equipo Patrick Lencioni (Table Group)</h2>
+            </div>
+
+            <div class="container m-4 p-4 text-start">
+                <b>Instrucciones:</b><br>
+                <br>
+                Contesta el cuestionario para evaluarte en las tres virtudes de un miembro ideal de un equipo.<br>
+                Responde lo más honestamente posible para que puedas encontrar las áreas en las que requieres mejorar.<br>
+                El ejercicio es individual y personal, la información obtenida será para tu uso propio.<br>
+                <br>
+                Usa la siguiente escala para calificar la percepción <b><i><u>que crees que los otros miembros de tu equipo</u></i></b> tienen acerca de ti.<br>
+                Al final se sumarán cada una de las categorías.
+            </div>
+
+            <div class="container m-4 text-center" id="scales_div"></div>
+        </div>
+
+        <!-- div>
+                Recuerda que el objetivo de esta herramienta es ayudarte a explorar tu estado actual según las tres virtudes del equipo ideal. El estándar del ideal es alto.
+                Puntaje	
+17 o 18	La virtud es una fortaleza potencial
+14 a 16	Hay algo de trabajo pendiente en la virtud para poder convertirse en un miembro ideal de un equipo
+13 o menos	Se necesita una mejora inmediata en la virtud
+        </div -->
+
+
+
+            <!-- div class="container m-4 p-4 text-start">
+                <div class="row">
+                    <div class="col-9">
+                        <p>
+                            Para <b><i>cada una de las filas</i></b>, seleccione la palabra que m&aacute;s vaya de acuerdo con su forma de ser y elija al lado derecho de la misma el n&uacute;mero 4.
+                            Posteriormente elija la segunda que m&aacute;s le describa y coloque el n&uacute;mero 3, y así sucesivamente hasta llegar a la que menos se relacione con usted a la cual le asignar&aacute; un n&uacute;mero 1.<br />
+                        </p>
+                        <p>
+                            Por favor conteste <i>lo que m&aacute;s se acerca a su forma de ser y no como le gustar&iacute;a ser</i>.<br />
+                        </p>
+                        <p>
+                            Al terminar, haga clic en el bot&oacute;n <button type="button" class="btn btn-primary" onclick="character_table.display_evaluation('character_evaluation');">Sumar</button> para evaluar las selecciones de <b><i>cada columna</i></b>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="container m-4 text-center" id="character_div"></div>
+            <div class="row m-4 p-4 justify-content-around">
+                <div class="col-3 text-center">
+                    <button type="button" class="btn btn-primary" onclick="character_table.display_evaluation('character_evaluation');">Sumar</button>
+                </div>
+                <div class="col-6 text-start p-4" id="character_evaluation"></div>
+            </div>
+        </div -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    </body>
+</html>
