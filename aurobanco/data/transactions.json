@@ -3,49 +3,49 @@
         {
             "id": "897129824368",
             "description": "AuroTienda Café",
-            "amount": 39.5,
+            "amount": "39.50",
             "currency": "MXN",
             "symbol": "$"
         },
         {
             "id": "678342098908",
             "description": "Pago de servicio",
-            "amount": 800,
+            "amount": "800.00",
             "currency": "MXN",
             "symbol": "$"
         },
         {
             "id": "14908314",
             "description": "Viajes Aurox",
-            "amount": 3610.23,
+            "amount": "3610.23",
             "currency":"MXN",
             "symbol":"$"
         },
         {
             "id": "657908341",
             "description": "Viajes Aurox",
-            "amount": 3610.23,
+            "amount": "3610.23",
             "currency": "MXN",
             "symbol": "$"
         },
         {
             "id": "98709870789",
             "description": "Pago servicio luz",
-            "amount": 240.09,
+            "amount": "240.09",
             "currency": "MXN",
             "symbol": "$"
         },
         {
             "id": "2452314",
             "description": "Amazon",
-            "amount": 180,
+            "amount": "180.00",
             "currency": "MXN",
             "symbol": "$"
         },
         {
             "id": "3124675809",
             "description": "Gasolinería",
-            "amount": 670,
+            "amount": "670.00",
             "currency": "MXN",
             "symbol": "$"
         }
