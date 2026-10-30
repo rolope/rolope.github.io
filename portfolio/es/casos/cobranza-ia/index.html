@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobranza asistida por IA en WhatsApp para bancos — Roberto López</title>
+<meta name="description" content="Los bancos querían atender pagos vencidos por WhatsApp sin una persona en cada conversación: recordar, acordar una promesa de pago, recibir el comprobante y medir la satisfacción, sin riesgos cuando la IA no está segura.">
+<link rel="canonical" href="https://rolope.github.io/portfolio/es/casos/cobranza-ia/">
+<link rel="alternate" hreflang="en" href="https://rolope.github.io/portfolio/work/ai-collections/">
+<link rel="alternate" hreflang="es" href="https://rolope.github.io/portfolio/es/casos/cobranza-ia/">
+<link rel="alternate" hreflang="x-default" href="https://rolope.github.io/portfolio/work/ai-collections/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cobranza asistida por IA en WhatsApp para bancos — Roberto López">
+<meta property="og:description" content="Los bancos querían atender pagos vencidos por WhatsApp sin una persona en cada conversación: recordar, acordar una promesa de pago, recibir el comprobante y medir la satisfacción, sin riesgos cuando la IA no está segura.">
+<meta property="og:url" content="https://rolope.github.io/portfolio/es/casos/cobranza-ia/">
+<meta property="og:locale" content="es_MX">
+<meta name="theme-color" content="#0b6e4f">
+<link rel="icon" href="/portfolio/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/portfolio/assets/site.css">
+<script>(function(d){d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(x){}d.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')})(document.documentElement)</script>
+<script src="/portfolio/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<header class="bar"><div class="bar-in">
+<a class="avatar" href="/portfolio/es/" aria-label="Roberto López">RL</a>
+<div class="who"><strong>Roberto López</strong><span>Ingeniero de Innovación en Auronix · 2020–2026</span></div>
+<a class="bar-btn lang" href="/portfolio/work/ai-collections/" hreflang="en" lang="en" aria-label="View in English">English</a>
+<button class="bar-btn theme-btn" id="theme" type="button" aria-label="Cambiar modo oscuro" aria-pressed="false">
+<svg class="moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+<svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+</button>
+</div></header>
+<main id="main" class="thread">
+<p class="chip-day">2025–2026</p>
+<div class="msg out group-start"><p>Cuéntame de la cobranza con IA.<span class="ticks" aria-hidden="true">✓✓</span></p></div>
+<div class="msg in"><h1>Cobranza asistida por IA en WhatsApp para bancos</h1><p class="case-meta">2025–2026 · Banorte · Invex · Banco Azteca · Aurobanco</p></div>
+<div class="msg in"><h2>El problema</h2><p>Los bancos querían atender pagos vencidos por WhatsApp sin una persona en cada conversación: recordar, acordar una promesa de pago, recibir el comprobante y medir la satisfacción, sin riesgos cuando la IA no está segura.</p></div>
+<div class="msg in"><h2>Lo que construí</h2><ul class="pts"><li>Creé el bot de cobranza preventiva: mensaje inicial con WhatsApp Flow, promesa de pago, camino de &quot;ya pagué&quot; con carga de comprobante, validaciones de fecha y monto y encuesta de estrellas.</li><li>Integré un agente de cobranza con LLM y un FAQ de base de conocimiento con function calling. Cuando la confianza del modelo es baja, el bot muestra un menú de desambiguación en lugar de adivinar.</li><li>Buffer de ráfagas: agrupa los mensajes que el cliente manda seguidos antes de que responda la IA.</li><li>OCR de comprobantes dentro de WhatsApp Flows con visión de OpenAI para Invex y un flujo multicliente de reporte de pago: identifica el banco emisor, rechaza comprobantes manuscritos y aplica un timeout estricto.</li><li>Banorte: funciones del bot de cobranza (CSAT, deeplinks, manejo del agente IA), la persistencia de la encuesta CSAT con el nuevo método de descifrado de Meta y endpoints de la API de cobranza.</li><li>Encuesta de servicio de Banco Azteca: migré su caché de memoria a Redis/ElastiCache.</li></ul></div>
+<div class="msg in"><h2>Mi rol</h2><p>Creé el bot de cobranza preventiva y las funciones de OCR de comprobantes, y contribuí a los servicios de Banorte junto con el equipo de finanzas.</p></div>
+<div class="msg in"><h2>Stack</h2><ul class="tags"><li>JavaScript bots</li><li>NestJS</li><li>Prisma</li><li>MySQL</li><li>Redis</li><li>AWS S3</li><li>OpenAI vision</li><li>WhatsApp Flows</li><li>Laravel</li></ul></div>
+<nav class="quick group-start" aria-label="Otros casos de estudio"><a href="/portfolio/es/#projects">← Volver al chat</a><a href="/portfolio/es/casos/libreria-bots/">La librería compartida de bots</a><a href="/portfolio/es/casos/runtime-bots/">El runtime de bots FlowsJS</a><a href="/portfolio/es/casos/larii/">Larii</a></nav>
+</main>
+<footer>Hecho a mano con HTML, CSS y un poco de JavaScript. Actualizado 2026-10-29.</footer>
+</body>
+</html>
