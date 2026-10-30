@@ -3,20 +3,20 @@
 :root {
   --bg: #f6f1e9; --card: #ffffff; --ink: #1d2329; --muted: #5a6670; --acc: #0b6e4f; --acc-ink: #ffffff;
   --soft: #e3f2ec; --line: #e4ddd2; --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
-  --bubble-in: #ffffff; --bubble-out: #d8f3c8; --draft: #b3261e;
+  --bubble-in: #ffffff; --bubble-out: #d8f3c8;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1719; --card: #182427; --ink: #e8efed; --muted: #a2b3ae; --acc: #5ad6a8; --acc-ink: #0b1f19;
     --soft: #173a31; --line: #2a3b3f; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
-    --bubble-in: #1b2a2e; --bubble-out: #145240; --draft: #ff8f80; color-scheme: dark;
+    --bubble-in: #1b2a2e; --bubble-out: #145240; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1719; --card: #182427; --ink: #e8efed; --muted: #a2b3ae; --acc: #5ad6a8; --acc-ink: #0b1f19;
   --soft: #173a31; --line: #2a3b3f; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
-  --bubble-in: #1b2a2e; --bubble-out: #145240; --draft: #ff8f80; color-scheme: dark;
+  --bubble-in: #1b2a2e; --bubble-out: #145240; color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -132,10 +132,6 @@ section + section { border-top: 1px solid var(--line); }
 .faq summary::after { content: "+"; color: var(--acc); font-size: 1.3rem; line-height: 1; }
 .faq details[open] summary::after { content: "–"; }
 .faq details p { margin: 0; padding: 0 1.2rem 1.1rem; color: var(--muted); }
-
-/* Borrador: solo en vista previa, el generador no publica con esto */
-.draft { outline: 2px dashed var(--draft); outline-offset: 10px; border-radius: 12px; position: relative; }
-.draft::before { content: attr(data-draft); position: absolute; top: -2.1rem; right: 0; color: var(--draft); font-size: .72rem; font-weight: 800; letter-spacing: .06em; }
 
 /* Cierre */
 .closing { background: var(--acc); color: var(--acc-ink); text-align: center; border-top: 0; }
